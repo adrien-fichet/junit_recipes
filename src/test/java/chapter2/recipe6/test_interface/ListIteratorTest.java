@@ -5,10 +5,10 @@ import java.util.Iterator;
 
 public class ListIteratorTest extends IteratorTest {
 
-	@Override
-	public Iterator<?> makeNoMoreElementsIterator() {
-		return new ArrayList<Object>().iterator();
-	}
-	
-	
+    @Override
+    public Iterator<?> makeNoMoreElementsIterator() {
+        return new ArrayList<Object>().iterator();
+    }
+
+
 }
