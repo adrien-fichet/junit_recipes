@@ -1,0 +1,6 @@
+.idea
+.settings
+jbrains
+.classpath
+.project
+junit_recipes.iml
