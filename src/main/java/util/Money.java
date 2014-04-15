@@ -16,10 +16,7 @@ public class Money {
         }
 
         Money m = (Money) b;
-        return (
-                units == m.units &&
-                        decimals == m.decimals
-        );
+        return (units == m.units && decimals == m.decimals);
     }
 
     public int valueInCents() {
