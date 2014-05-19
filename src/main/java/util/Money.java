@@ -1,7 +1,10 @@
 package util;
 
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class Money {
     private int units;
@@ -10,6 +13,12 @@ public class Money {
     public Money(int units, int decimals) {
         this.units = units;
         this.decimals = decimals;
+    }
+
+    public Money(String amount) throws ParseException {
+        double amountInDollars = NumberFormat.getCurrencyInstance(Locale.US).parse(amount).doubleValue();
+        this.units = 0;
+        this.decimals = (int) (amountInDollars * 100);
     }
 
     public int getUnits() {
