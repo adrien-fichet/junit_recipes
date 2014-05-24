@@ -10,6 +10,9 @@
         <junit.version>4.11</junit.version>
         <jaxen.version>1.1.6</jaxen.version>
         <dom4j.version>1.6.1</dom4j.version>
+        <coveralls.version>2.2.0</coveralls.version>
+        <cobertura.version>2.6</cobertura.version>
+        <surefire.version>2.5</surefire.version>
     </properties>
 
     <dependencies>
@@ -36,12 +39,12 @@
             <plugin>
                 <groupId>org.eluder.coveralls</groupId>
                 <artifactId>coveralls-maven-plugin</artifactId>
-                <version>2.2.0</version>
+                <version>${coveralls.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
-                <version>2.6</version>
+                <version>${cobertura.version}</version>
                 <configuration>
                     <formats>
                         <format>html</format>
@@ -49,6 +52,18 @@
                     </formats>
                     <maxmem>256m</maxmem>
                     <check/>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${surefire.version}</version>
+                <configuration>
+                    <systemPropertyVariables>
+                        <FOO>BAR</FOO>
+                        <spaces.are.ok>string with spaces</spaces.are.ok>
+                        <buildDirectory>${project.build.directory}</buildDirectory>
+                    </systemPropertyVariables>
                 </configuration>
             </plugin>
         </plugins>
