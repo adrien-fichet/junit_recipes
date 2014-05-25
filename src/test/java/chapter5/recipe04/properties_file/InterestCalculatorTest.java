@@ -3,13 +3,12 @@ package chapter5.recipe04.properties_file;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
 public class InterestCalculatorTest {
-    private String propertiesFile = "/interest_rates.properties";
+    private String propertiesFile = "/chapter5/recipe04/properties_file/InterestCalculatorTest.properties";
     private double interestRate, loanAmount;
     private int loanDuration;
 
