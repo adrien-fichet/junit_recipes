@@ -13,6 +13,7 @@
         <coveralls.version>2.2.0</coveralls.version>
         <cobertura.version>2.6</cobertura.version>
         <surefire.version>2.5</surefire.version>
+        <log4unit.version>0.2.0_1</log4unit.version>
     </properties>
 
     <dependencies>
@@ -31,6 +32,11 @@
             <groupId>dom4j</groupId>
             <artifactId>dom4j</artifactId>
             <version>${dom4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>log4unit</groupId>
+            <artifactId>log4unit</artifactId>
+            <version>${log4unit.version}</version>
         </dependency>
     </dependencies>
 
