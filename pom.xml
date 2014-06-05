@@ -14,6 +14,7 @@
         <cobertura.version>2.6</cobertura.version>
         <surefire.version>2.5</surefire.version>
         <log4unit.version>0.2.0_1</log4unit.version>
+        <xmlunit.version>1.5</xmlunit.version>
     </properties>
 
     <dependencies>
@@ -37,6 +38,11 @@
             <groupId>log4unit</groupId>
             <artifactId>log4unit</artifactId>
             <version>${log4unit.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>xmlunit</groupId>
+            <artifactId>xmlunit</artifactId>
+            <version>${xmlunit.version}</version>
         </dependency>
     </dependencies>
 
