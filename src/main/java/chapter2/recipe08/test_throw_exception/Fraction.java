@@ -15,9 +15,4 @@ public class Fraction {
             return n / d;
         }
     }
-
-    public static void main(String[] args) {
-        Fraction f = new Fraction(1, 0);
-        System.out.println(f.getResult());
-    }
 }

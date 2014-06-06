@@ -1,12 +1,13 @@
 package chapter2.recipe11.test_object_that_instanciates_other_objects;
 
-import junit.framework.TestCase;
 import org.junit.Test;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 
-public class DeploymentTest extends TestCase {
+import static org.junit.Assert.*;
+
+public class DeploymentTest {
 
     @Test
     public void testTargetFileNotFound() throws Exception {
@@ -20,4 +21,10 @@ public class DeploymentTest extends TestCase {
             assertEquals("hello", e.getMessage());
         }
     }
+
+    @Test
+    public void testDeploy() throws Exception {
+        assertTrue(new Deployment(Deployer.getInstance()).deploy(new File("hello")));
+    }
+
 }

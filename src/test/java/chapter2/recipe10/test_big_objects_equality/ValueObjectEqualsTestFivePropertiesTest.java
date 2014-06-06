@@ -1,7 +1,5 @@
 package chapter2.recipe10.test_big_objects_equality;
 
-import org.junit.Test;
-
 import java.util.Arrays;
 import java.util.List;
 

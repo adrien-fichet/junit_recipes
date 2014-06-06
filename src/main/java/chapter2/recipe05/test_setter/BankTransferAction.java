@@ -1,4 +1,4 @@
-package chapter2.recipe04.test_setter;
+package chapter2.recipe05.test_setter;
 
 import util.Money;
 
@@ -18,11 +18,11 @@ public class BankTransferAction {
         this.amount = amount;
     }
 
-    public void execute() {
-        execute(Bank.getInstance());
+    public boolean execute() {
+        return execute(Bank.getInstance());
     }
 
-    public void execute(Bank bank) {
-        bank.transfer(sourceAccountId, targetAccountId, amount);
+    public boolean execute(Bank bank) {
+        return bank.transfer(sourceAccountId, targetAccountId, amount);
     }
 }

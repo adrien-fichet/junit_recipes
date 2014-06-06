@@ -14,7 +14,7 @@ public class Deployment {
         this.deployer = deployer;
     }
 
-    public void deploy(File targetFile) throws FileNotFoundException {
-        deployer.deploy(this, targetFile);
+    public boolean deploy(File targetFile) throws FileNotFoundException {
+        return deployer.deploy(this, targetFile);
     }
 }

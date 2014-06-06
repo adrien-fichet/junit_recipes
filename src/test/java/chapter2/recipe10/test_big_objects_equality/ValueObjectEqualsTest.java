@@ -1,10 +1,13 @@
 package chapter2.recipe10.test_big_objects_equality;
 
-import java.util.*;
-
 import junit.framework.AssertionFailedError;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import static org.junit.Assert.*;
 
 public abstract class ValueObjectEqualsTest {
@@ -93,12 +96,12 @@ public abstract class ValueObjectEqualsTest {
     @Test
     public final void testEqualsAgainstUnequalObjects() {
          for (Object key : differentObjects.keySet()) {
-           assertNotEquals("1st vs. " + nameOf(key), control, differentObjects.get(key));
-            assertNotEquals("2nd vs. " + nameOf(key), equalToControl, differentObjects.get(key));
-            assertNotEquals("3rd vs. " + nameOf(key), equalToControl2, differentObjects.get(key));
-            assertNotEquals(nameOf(key) + " vs. 1st", differentObjects.get(key), control);
-            assertNotEquals(nameOf(key) + " vs. 2nd", differentObjects.get(key), equalToControl);
-            assertNotEquals(nameOf(key) + " vs. 3rd", differentObjects.get(key), equalToControl2);
+             assertNotEquals("1st vs. " + nameOf(key), control, differentObjects.get(key));
+             assertNotEquals("2nd vs. " + nameOf(key), equalToControl, differentObjects.get(key));
+             assertNotEquals("3rd vs. " + nameOf(key), equalToControl2, differentObjects.get(key));
+             assertNotEquals(nameOf(key) + " vs. 1st", differentObjects.get(key), control);
+             assertNotEquals(nameOf(key) + " vs. 2nd", differentObjects.get(key), equalToControl);
+             assertNotEquals(nameOf(key) + " vs. 3rd", differentObjects.get(key), equalToControl2);
         }
     }
 

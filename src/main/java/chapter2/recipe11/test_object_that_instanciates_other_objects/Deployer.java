@@ -10,6 +10,7 @@ public class Deployer {
         return deployer;
     }
 
-    public void deploy(Deployment deployment, File targetFile) throws FileNotFoundException {
+    public boolean deploy(Deployment deployment, File targetFile) throws FileNotFoundException {
+        return true;
     }
 }
