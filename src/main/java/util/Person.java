@@ -14,4 +14,11 @@ public class Person {
                 "<lastname>" + lastname + "</lastname>" +
                 "</person>";
     }
+
+    public String toXmlWithWhitespace() {
+        return "<person>\n" +
+                "\t<firstname>" + firstname + "</firstname>\n" +
+                "\t<lastname>" + lastname + "</lastname>\n" +
+                "</person>\n";
+    }
 }
