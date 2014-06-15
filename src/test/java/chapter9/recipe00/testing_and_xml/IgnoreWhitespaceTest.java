@@ -10,10 +10,12 @@ public class IgnoreWhitespaceTest extends XMLTestCase {
     @Test
     public void testIgnoreWhitespace() throws Exception {
         Person person = new Person("J.B.", "Rainsberger");
+        XMLUnit.setIgnoreWhitespace(false);
         String personXmlWithWhitespace = person.toXmlWithWhitespace();
         assertFalse(personXmlWithWhitespace.equals(person.toXml()));
         assertXMLNotEqual(personXmlWithWhitespace, person.toXml());
         XMLUnit.setIgnoreWhitespace(true);
         assertXMLEqual(personXmlWithWhitespace, person.toXml());
+        XMLUnit.setIgnoreWhitespace(false);
     }
 }
