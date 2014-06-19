@@ -1,17 +1,14 @@
 package chapter9.recipe02.xml_ignore_order;
 
-import com.sun.org.apache.xpath.internal.XPathAPI;
-import org.custommonkey.xmlunit.XMLUnit;
+import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
+import org.jaxen.JaxenException;
+import org.jaxen.dom4j.Dom4jXPath;
 import org.junit.Test;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
 
-import javax.xml.transform.TransformerException;
-import java.io.File;
-import java.io.FileInputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
@@ -22,36 +19,31 @@ public class ActionServletInitializerTest {
 
     @Test
     public void testActionServletInitializationParameters() throws Exception {
-        File webXmlFile = new File(getClass().getResource(webXml).getPath());
-        Document document = XMLUnit.buildTestDocument(new InputSource(new FileInputStream(webXmlFile)));
+        Document document = new SAXReader().read(getClass().getResourceAsStream(webXml));
         Map expectedParameters = getExpectedParameters();
         Map<String, String> actualParameters = getInitParams(document);
         assertEquals(expectedParameters, actualParameters);
     }
 
-    private Map<String, String> getInitParams(Document document) throws TransformerException {
+    private Map<String, String> getInitParams(Document document) throws JaxenException {
         Map<String, String> result = new HashMap<String, String>();
-        NodeList initParamNodes = XPathAPI.selectNodeList(document.getDocumentElement(),
-                "/web-app/servlet[servlet-name='action']/init-param");
-        int matchingNodes = initParamNodes.getLength();
-        assertFalse("Found no nodes. Something wrong with XPath statement", matchingNodes == 0);
-        appendInitParams(initParamNodes, result);
+        List<Element> nodes = new Dom4jXPath("/web-app/servlet[servlet-name='action']/init-param").selectNodes(document);
+        assertFalse("Found no nodes. Something wrong with XPath statement", nodes.size() == 0);
+        appendInitParams(nodes, result);
         return result;
     }
 
-    private void appendInitParams(NodeList initParamNodes, Map<String, String> result) {
-        for (int i = 0; i < initParamNodes.getLength(); i++) {
-            Node currentNode = initParamNodes.item(i);
+    private void appendInitParams(List<Element> nodes, Map<String, String> result) {
+        for (Element element : nodes) {
             String name = null;
             String value = null;
+            List<Element> childNodes = element.elements();
 
-            NodeList childNodes = currentNode.getChildNodes();
-            for (int j = 0; j < childNodes.getLength(); j++) {
-                Node each = childNodes.item(j);
-                if ("param-name".equals(each.getNodeName())) {
-                    name = getText(each);
-                } else if ("param-value".equals(each.getNodeName())) {
-                    value = getText(each);
+            for (Element child : childNodes) {
+                if ("param-name".equals(child.getName())) {
+                    name = child.getTextTrim();
+                } else if ("param-value".equals(child.getName())) {
+                    value = child.getTextTrim();
                 }
             }
 
@@ -66,10 +58,5 @@ public class ActionServletInitializerTest {
         result.put("detail", "2");
         result.put("config", "/WEB-INF/struts-config.xml");
         return result;
-    }
-
-    private String getText(Node each) {
-        String nodeText = each.getFirstChild().getNodeValue();
-        return (nodeText == null) ? null : nodeText.trim();
     }
 }
