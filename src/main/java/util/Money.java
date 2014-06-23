@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class Money {
+    public static final Money ZERO = new Money(0, 0);
     private int units;
     private int decimals;
 
@@ -62,8 +63,8 @@ public class Money {
         }
     }
 
-    public List split(int nWays) {
-        List result = new ArrayList();
+    public List<Money> split(int nWays) {
+        List<Money> result = new ArrayList<Money>();
         int baseSplitInCents = valueInCents() / nWays;
         int centsLeftOver = valueInCents() - baseSplitInCents * nWays;
 
@@ -85,4 +86,9 @@ public class Money {
     public String toString() {
         return "[" + units + "," + decimals + "]";
     }
+
+    public Money multipliedBy(int value) {
+        return new Money(units * value, decimals * value);
+    }
+
 }
