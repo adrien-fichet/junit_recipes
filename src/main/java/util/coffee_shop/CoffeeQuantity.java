@@ -1,4 +1,4 @@
-package chapter9.recipe03.xml_ignore_certain_differences;
+package util.coffee_shop;
 
 public class CoffeeQuantity extends Quantity {
     public CoffeeQuantity(int kilograms, String coffeeName) {

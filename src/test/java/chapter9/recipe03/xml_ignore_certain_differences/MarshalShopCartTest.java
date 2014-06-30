@@ -7,6 +7,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import util.Money;
+import util.coffee_shop.CoffeeCatalog;
+import util.coffee_shop.CoffeeQuantity;
+import util.coffee_shop.ShopcartBean;
+import util.coffee_shop.ShopcartModel;
 
 import java.util.Arrays;
 

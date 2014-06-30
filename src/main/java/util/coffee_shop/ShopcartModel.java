@@ -1,4 +1,4 @@
-package chapter9.recipe03.xml_ignore_certain_differences;
+package util.coffee_shop;
 
 import java.io.Serializable;
 import java.util.HashMap;
